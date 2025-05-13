@@ -1,10 +1,10 @@
-
 page 50100 "Custom Sales Order"
 {
     PageType = Document;
     SourceTable = "Custom Sales Header";
     ApplicationArea = All;
-    UsageCategory = Lists;
+    UsageCategory = Documents; // Makes it appear in search/navigation
+    Editable = true;
 
     layout
     {
@@ -12,18 +12,21 @@ page 50100 "Custom Sales Order"
         {
             group("General")
             {
-                field("Document Type"; Rec."Document Type") { }
-                field("No."; Rec."No.") { }
-                field("App Order No."; Rec."App Order No.") { }
-                field("Customer No."; Rec."Customer No.") { }
-                field("PO Number"; Rec."PO Number") { }
-                field("BC Document No."; Rec."BC Document No.") { }
-                field("Status"; Rec."Status") { }
+                field("Document Type"; Rec."Document Type") { ApplicationArea = All; }
+                field("No."; Rec."No.") { ApplicationArea = All; }
+                field("App Order No."; Rec."App Order No.") { ApplicationArea = All; }
+                field("Customer No."; Rec."Customer No.") { ApplicationArea = All; }
+                field("PO Number"; Rec."PO Number") { ApplicationArea = All; }
+                field("BC Document No."; Rec."BC Document No.") { ApplicationArea = All; }
+                field("Status"; Rec."Status") { ApplicationArea = All; }
             }
 
             part(Lines; "Custom Sales Order Subpage")
             {
-                SubPageLink = "Document No." = field("No.");
+                ApplicationArea = All;
+                SubPageLink = "Document Type" = field("Document Type"),
+                              "Document No." = field("No.");
+                UpdatePropagation = Both; // Ensures changes reflect both ways
             }
         }
     }
@@ -36,11 +39,12 @@ page 50100 "Custom Sales Order"
             {
                 // Caption = 'Transfer to Sales Order';
                 // Image = Transfer;
+                // ApplicationArea = All;
                 // trigger OnAction()
                 // var
                 //     CustomSalesHeader: Record "Custom Sales Header";
                 // begin
-                //     CustomSalesHeader.Get(Rec."No.");
+                //     CustomSalesHeader.Get(Rec."Document Type", Rec."No.");
                 //     Codeunit50100.TransferToSalesOrder(CustomSalesHeader);
                 //     Message('Sales Order created successfully.');
                 // end;
