@@ -10,6 +10,11 @@ table 50100 "Custom Sales Header"
         field(4; "Customer No."; Code[20]) { TableRelation = Customer."No."; }
         field(5; "PO Number"; Code[35]) { }
         field(6; "BC Document No."; Code[20]) { }
+        field(7; "Status"; Option)
+        {
+            OptionMembers = Open,Released,Pending,Transferred;
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
