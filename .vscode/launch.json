@@ -2,21 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "PowerappCustompage",
+            "tenant": "527bb1a8-9158-41ca-a990-67c1d3ed38a4",
+            "name": "Microsoft cloud sandbox",
             "request": "launch",
             "type": "al",
-            "environmentType": "OnPrem",
-            "server": "http://localhost:8080/BC252/",
-            "serverInstance": "BC252",
-            "authentication": "Windows",
+            "environmentType": "Sandbox",
+            "environmentName": "training1",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
-            "enableSqlInformationDebugger": true,
-            "tenant": "default",
-            "usePublicURLFromServer": true
+            "enableSqlInformationDebugger": true
         }
     ]
 }

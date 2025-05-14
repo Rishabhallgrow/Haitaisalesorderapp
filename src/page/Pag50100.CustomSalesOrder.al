@@ -1,9 +1,9 @@
-page 50100 "Custom Sales Order"
+page 50115 "Custom Sales Order"
 {
     PageType = Document;
     SourceTable = "Custom Sales Header";
     ApplicationArea = All;
-    UsageCategory = Documents; // Makes it appear in search/navigation
+    UsageCategory = Documents;
     Editable = true;
 
     layout
@@ -26,7 +26,7 @@ page 50100 "Custom Sales Order"
                 ApplicationArea = All;
                 SubPageLink = "Document Type" = field("Document Type"),
                               "Document No." = field("No.");
-                UpdatePropagation = Both; // Ensures changes reflect both ways
+                UpdatePropagation = Both;
             }
         }
     }
@@ -37,18 +37,28 @@ page 50100 "Custom Sales Order"
         {
             action(TransferToSalesOrder)
             {
-                // Caption = 'Transfer to Sales Order';
-                // Image = Transfer;
-                // ApplicationArea = All;
-                // trigger OnAction()
-                // var
-                //     CustomSalesHeader: Record "Custom Sales Header";
-                // begin
-                //     CustomSalesHeader.Get(Rec."Document Type", Rec."No.");
-                //     Codeunit50100.TransferToSalesOrder(CustomSalesHeader);
-                //     Message('Sales Order created successfully.');
-                // end;
+                Caption = 'Transfer to Sales Order';
+                Image = Transfer;
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    CustomSalesHeader: Record "Custom Sales Header";
+                begin
+                    CustomSalesHeader.Get(Rec."Document Type", Rec."No.");
+                    // Codeunit50100.TransferToSalesOrder(CustomSalesHeader);
+                    Message('Sales Order created successfully.');
+                end;
             }
         }
     }
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        NoSeriesMgt: Codeunit "No. Series";
+    begin
+        Rec.Init();
+        Rec."Document Type" := Rec."Document Type"::Order;
+        Rec."No." := NoSeriesMgt.GetNextNo('10000', Today, true);
+        Rec.Insert(true);
+    end;
 }
