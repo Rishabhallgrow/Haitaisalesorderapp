@@ -4,7 +4,7 @@ table 50101 "Custom Sales Line"
 
     fields
     {
-        field(1; "Document Type"; Enum "Sales Document Type") { }
+        field(1; "Document Type"; Enum "Custom Sales Document Type") { }
         field(2; "Document No."; Code[20]) { TableRelation = "Custom Sales Header"."No."; }
         field(3; "Line No."; Integer) { }
         field(4; "App Order No."; Code[20]) { }
@@ -23,4 +23,22 @@ table 50101 "Custom Sales Line"
     {
         key(PK; "Document Type", "Document No.", "Line No.") { Clustered = true; }
     }
+
+    trigger OnInsert()
+    begin
+        if "Line No." = 0 then
+            "Line No." := GetNextLineNo("Document Type", "Document No.");
+    end;
+
+    local procedure GetNextLineNo(DocumentType: Enum "Custom Sales Document Type"; DocumentNo: Code[20]): Integer
+    var
+        CustomLine: Record "Custom Sales Line";
+    begin
+        CustomLine.SetRange("Document Type", DocumentType);
+        CustomLine.SetRange("Document No.", DocumentNo);
+        if CustomLine.FindLast() then
+            exit(CustomLine."Line No." + 10000)
+        else
+            exit(10000);
+    end;
 }

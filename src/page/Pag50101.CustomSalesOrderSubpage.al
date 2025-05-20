@@ -1,4 +1,3 @@
-
 page 50116 "Custom Sales Order Subpage"
 {
     PageType = ListPart;
@@ -14,7 +13,18 @@ page 50116 "Custom Sales Order Subpage"
             repeater(Group)
             {
                 field("Line No."; Rec."Line No.") { ApplicationArea = All; }
-                field("Item No."; Rec."Item No.") { ApplicationArea = All; }
+
+                field("Item No."; Rec."Item No.")
+                {
+                    ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        if Rec."Line No." = 0 then
+                            Rec."Line No." := GetNextLineNo(Rec."Document Type", Rec."Document No.");
+                    end;
+                }
+
                 field("Description"; Rec."Description") { ApplicationArea = All; }
                 field("Description 2"; Rec."Description 2") { ApplicationArea = All; }
                 field("Price Type"; Rec."Price Type") { ApplicationArea = All; }
@@ -27,13 +37,7 @@ page 50116 "Custom Sales Order Subpage"
         }
     }
 
-    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
-    begin
-        Rec."Line No." := GetNextLineNo(Rec."Document Type", Rec."Document No.");
-        exit(true);
-    end;
-
-    procedure GetNextLineNo(DocumentType: Enum "Sales Document Type"; DocumentNo: Code[20]): Integer
+    procedure GetNextLineNo(DocumentType: Enum "Custom Sales Document Type"; DocumentNo: Code[20]): Integer
     var
         CustomLine: Record "Custom Sales Line";
     begin

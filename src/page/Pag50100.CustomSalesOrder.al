@@ -58,7 +58,7 @@ page 50115 "Custom Sales Order"
     begin
         Rec.Init();
         Rec."Document Type" := Rec."Document Type"::Order;
-        Rec."No." := NoSeriesMgt.GetNextNo('10000', Today, true);
+        Rec."No." := NoSeriesMgt.GetNextNo('S-ORD', Today, true);
         Rec.Insert(true);
     end;
 }
