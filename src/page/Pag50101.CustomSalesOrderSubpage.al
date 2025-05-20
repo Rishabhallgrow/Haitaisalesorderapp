@@ -44,7 +44,7 @@ page 50116 "Custom Sales Order Subpage"
         CustomLine.SetRange("Document Type", DocumentType);
         CustomLine.SetRange("Document No.", DocumentNo);
         if CustomLine.FindLast() then
-            exit(CustomLine."Line No." + 10000)
+            exit(CustomLine."Line No." + 20000)
         else
             exit(10000);
     end;

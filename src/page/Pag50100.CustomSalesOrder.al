@@ -33,7 +33,7 @@ page 50115 "Custom Sales Order"
 
     actions
     {
-        area(processing)
+        area(Processing)
         {
             action(TransferToSalesOrder)
             {
@@ -52,6 +52,7 @@ page 50115 "Custom Sales Order"
         }
     }
 
+
     trigger OnNewRecord(BelowxRec: Boolean)
     var
         NoSeriesMgt: Codeunit "No. Series";
@@ -59,6 +60,6 @@ page 50115 "Custom Sales Order"
         Rec.Init();
         Rec."Document Type" := Rec."Document Type"::Order;
         Rec."No." := NoSeriesMgt.GetNextNo('S-ORD', Today, true);
-        Rec.Insert(true);
     end;
+
 }
