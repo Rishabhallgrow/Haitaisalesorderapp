@@ -24,7 +24,6 @@ page 50116 "Custom Sales Order Subpage"
                             Rec."Line No." := GetNextLineNo(Rec."Document Type", Rec."Document No.");
                     end;
                 }
-
                 field("Description"; Rec."Description") { ApplicationArea = All; }
                 field("Description 2"; Rec."Description 2") { ApplicationArea = All; }
                 field("Price Type"; Rec."Price Type") { ApplicationArea = All; }
@@ -44,8 +43,8 @@ page 50116 "Custom Sales Order Subpage"
         CustomLine.SetRange("Document Type", DocumentType);
         CustomLine.SetRange("Document No.", DocumentNo);
         if CustomLine.FindLast() then
-            exit(CustomLine."Line No." + 20000)
+            exit(CustomLine."Line No." + 2000)
         else
-            exit(10000);
+            exit(1000);
     end;
 }
