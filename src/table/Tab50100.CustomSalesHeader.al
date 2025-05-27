@@ -19,6 +19,6 @@ table 50100 "Custom Sales Header"
 
     keys
     {
-        key(PK; "Document Type", "No.") { Clustered = true; }
+        key(PK; "App Order No.") { Clustered = true; }
     }
 }

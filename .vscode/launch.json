@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "tenant": "527bb1a8-9158-41ca-a990-67c1d3ed38a4",
+            "tenant": "de800ed2-08e7-46fb-920c-c6441197e378",
             "name": "Microsoft cloud sandbox",
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "training1",
+            "environmentName": "Haitai_Development",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
