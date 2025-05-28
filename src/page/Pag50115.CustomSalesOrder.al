@@ -1,3 +1,4 @@
+//AGT.RP_05.28.2025..>>
 page 50115 "Custom Sales Order"
 {
     PageType = Document;
@@ -14,7 +15,7 @@ page 50115 "Custom Sales Order"
             {
                 field("Document Type"; Rec."Document Type") { ApplicationArea = All; }
                 field("No."; Rec."No.") { ApplicationArea = All; }
-                field("App Order No."; Rec."App Order No.") { ApplicationArea = All; }
+                field("App Order No.1"; Rec."App Order No.") { ApplicationArea = All; }
                 field("Customer No."; Rec."Customer No.") { ApplicationArea = All; }
                 field("PO Number"; Rec."PO Number") { ApplicationArea = All; }
                 field("BC Document No."; Rec."BC Document No.") { ApplicationArea = All; }
@@ -24,10 +25,10 @@ page 50115 "Custom Sales Order"
             part(Lines; "Custom Sales Order Subpage")
             {
                 ApplicationArea = All;
-                // SubPageLink = "App Order No." = field("App Order No.");
-                SubPageLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
+                SubPageLink = "App Order No." = field("App Order No.");
                 UpdatePropagation = Both;
             }
+
         }
     }
 
@@ -36,31 +37,44 @@ page 50115 "Custom Sales Order"
     {
         area(Processing)
         {
+            //AGT.AA_05.19.2025..>>
+
+            // action(TransferToSalesOrder)
+            // {
+            //     Caption = 'Transfer to Sales Order';
+            //     ApplicationArea = All;
+            //     trigger OnAction()
+            //     var
+            //         CustomHeader: Record "Custom Sales Header";
+            //         CustomLines: Record "Custom Sales Line";
+            //         Procedures: Codeunit 50101;
+            //     begin
+            //         CustomHeader := Rec;
+            //         // CustomLines.SetRange("Document No.", CustomHeader."No.");
+            //         CustomLines.SetRange("App Order No.", CustomHeader."App Order No.");
+            //         Procedures.CreateSalesHeader(CustomHeader, CustomLines);
+            //     end;
+            // }
+            //AGT.AA_05.19.2025..<<
+
+            //AGT.RP_05.28.2025..>>
+
             action(TransferToSalesOrder)
             {
                 Caption = 'Transfer to Sales Order';
                 ApplicationArea = All;
                 trigger OnAction()
                 var
-                    CustomHeader: Record "Custom Sales Header";
-                    CustomLines: Record "Custom Sales Line";
                     Procedures: Codeunit 50101;
                 begin
-                    CustomHeader := Rec;
-                    CustomLines.SetRange("Document No.", CustomHeader."No.");
-                    Procedures.CreateSalesHeader(CustomHeader, CustomLines);
+                    // Call the new procedure using App Order No. as the key
+                    Procedures.CreateSalesOrderFromAppOrderNo(Rec."App Order No.");
                 end;
             }
+            //AGT.AA_05.28.2025..<<
+
+
         }
     }
-    trigger OnOpenPage()
-    var
-        CustomLines: Record "Custom Sales Line";
-    begin
-        CustomLines.SetRange("Document No.", Rec."No.");
-        if CustomLines.FindFirst() then
-            CustomLines.DeleteAll();
-    end;
-
-
 }
+//AGT.RP_05.28.2025..<<

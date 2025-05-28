@@ -1,10 +1,9 @@
+//AGT.RP_05.28.2025..>>
 page 50116 "Custom Sales Order Subpage"
 {
+    Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "Custom Sales Line";
-    ApplicationArea = All;
-    Editable = true;
-    DelayedInsert = false;
 
     layout
     {
@@ -17,6 +16,7 @@ page 50116 "Custom Sales Order Subpage"
                 {
                     ApplicationArea = All;
                 }
+                field("App Order No."; Rec."App Order No.") { ApplicationArea = all; }
                 field("Description"; Rec."Description") { ApplicationArea = All; }
                 field("Description 2"; Rec."Description 2") { ApplicationArea = All; }
                 field("Price Type"; Rec."Price Type") { ApplicationArea = All; }
@@ -28,6 +28,5 @@ page 50116 "Custom Sales Order Subpage"
             }
         }
     }
-
-
 }
+//AGT.RP_05.28.2025..<<

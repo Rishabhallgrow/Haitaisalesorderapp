@@ -1,3 +1,4 @@
+//AGT.RP_05.28.2025..>>
 page 50117 "Custom Sales Order List"
 {
     PageType = List;
@@ -5,7 +6,7 @@ page 50117 "Custom Sales Order List"
     ApplicationArea = All;
     UsageCategory = Lists;
     Editable = false;
-    CardPageID = "Custom Sales Order"; // This links to your card page
+    CardPageID = "Custom Sales Order";
 
     layout
     {
@@ -15,7 +16,7 @@ page 50117 "Custom Sales Order List"
             {
                 field("Document Type"; Rec."Document Type") { ApplicationArea = All; }
                 field("No."; Rec."No.") { ApplicationArea = All; }
-                field("App Order No."; Rec."App Order No.") { ApplicationArea = All; }
+                field("App Order No.1"; Rec."App Order No.") { ApplicationArea = All; }
                 field("Customer No."; Rec."Customer No.") { ApplicationArea = All; }
                 field("PO Number"; Rec."PO Number") { ApplicationArea = All; }
                 field("BC Document No."; Rec."BC Document No.") { ApplicationArea = All; }
@@ -24,3 +25,4 @@ page 50117 "Custom Sales Order List"
         }
     }
 }
+//AGT.RP_05.28.2025..<<

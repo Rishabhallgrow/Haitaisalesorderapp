@@ -1,3 +1,4 @@
+//AGT.RP_05.28.2025..>>
 enum 50100 "Custom Sales Document Type"
 {
     Extensible = false;
@@ -7,3 +8,4 @@ enum 50100 "Custom Sales Document Type"
         Caption = 'Order';
     }
 }
+//AGT.RP_05.28.2025..<<

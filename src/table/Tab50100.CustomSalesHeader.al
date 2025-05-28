@@ -1,7 +1,8 @@
+//AGT.RP_05.28.2025..>>
 table 50100 "Custom Sales Header"
 {
+    //
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; "Document Type"; Enum "Custom Sales Document Type") { }
@@ -12,7 +13,7 @@ table 50100 "Custom Sales Header"
         field(6; "BC Document No."; Code[20]) { }
         field(7; "Status"; Option)
         {
-            OptionMembers = Open,Released,Pending,Transferred;
+            OptionMembers = Open,Submitted;
             DataClassification = CustomerContent;
         }
     }
@@ -22,3 +23,4 @@ table 50100 "Custom Sales Header"
         key(PK; "App Order No.") { Clustered = true; }
     }
 }
+//AGT.RP_05.28.2025..<<
