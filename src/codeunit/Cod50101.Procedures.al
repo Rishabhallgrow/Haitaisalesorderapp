@@ -83,8 +83,17 @@ codeunit 50101 Procedures
         // Filter and loop through custom lines
         CustomLine.SetRange("App Order No.", AppOrderNo);
         if CustomLine.FindSet() then begin
-            LineNo := 10000;
             repeat
+                // Determine next available Line No.
+                SalesLine.Reset();
+                SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                SalesLine.SetRange("Document No.", SalesHeader."No.");
+                if SalesLine.FindLast() then
+                    LineNo := SalesLine."Line No." + 10000
+                else
+                    LineNo := 10000;
+
+                // Create Sales Line
                 SalesLine.Init();
                 SalesLine.Validate("Document Type", SalesHeader."Document Type");
                 SalesLine.Validate("Document No.", SalesHeader."No.");
@@ -94,8 +103,6 @@ codeunit 50101 Procedures
                 SalesLine.Validate(Quantity, CustomLine.Qty);
                 SalesLine.Validate("Unit Price", CustomLine."Unit Price");
                 SalesLine.Insert(true);
-
-                LineNo += 10000;
             until CustomLine.Next() = 0;
         end else
             Message('No lines found for App Order No. %1', AppOrderNo);
