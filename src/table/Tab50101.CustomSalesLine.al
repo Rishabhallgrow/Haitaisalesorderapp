@@ -9,7 +9,19 @@ table 50101 "Custom Sales Line"
         field(2; "Document No."; Code[20]) { }
         field(3; "Line No."; Integer) { AutoIncrement = true; }
         field(4; "App Order No."; Code[20]) { }
-        field(5; "Item No."; Code[20]) { TableRelation = Item."No."; }
+        field(5; "Item No."; Code[20])
+        {
+            TableRelation = Item."No.";
+            trigger OnValidate()
+            var
+                ItemRec: Record Item;
+            begin
+                if ItemRec.Get("Item No.") then
+                    "Unit Price" := ItemRec."Unit Price";
+            end;
+
+
+        }
         field(6; "Description"; Text[100]) { }
         field(7; "Description 2"; Text[100]) { }
         field(8; "Price Type"; Option) { OptionMembers = "M","P1","P2"; }

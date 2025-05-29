@@ -2,7 +2,7 @@
   "id": "ef9d4716-44c6-464d-afba-751ca6c87e63",
   "name": "Haitaisales",
   "publisher": "AGT_RP",
-  "version": "1.0.0.5",
+  "version": "1.0.0.7",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -10,10 +10,20 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "e5145dc8-88e4-47ac-a846-6ecade1bde4f",
+      "name": "Haitai_Core",
+      "version": "2.1.7.7",
+      "publisher": "S-Metric"
+    }
+  
+  ]
+  ,
   "screenshots": [],
   "platform": "1.0.0.0",
   "application": "25.0.0.0",
+
   "idRanges": [
     {
       "from": 50100,

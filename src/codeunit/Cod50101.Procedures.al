@@ -103,6 +103,12 @@ codeunit 50101 Procedures
                 SalesLine.Validate(Quantity, CustomLine.Qty);
                 SalesLine.Validate("Unit Price", CustomLine."Unit Price");
                 SalesLine.Insert(true);
+                SalesLine.Validate("Each Price", CustomLine."Each Price");
+                // SalesLine."Each Price" := CustomLine."Each Price";
+                Message('data %1', CustomLine."Each Price");
+                SalesLine.Modify(true);
+
+                Message('Each price is %1', SalesLine."Each Price");
             until CustomLine.Next() = 0;
         end else
             Message('No lines found for App Order No. %1', AppOrderNo);
