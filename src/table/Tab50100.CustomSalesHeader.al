@@ -16,6 +16,8 @@ table 50100 "Custom Sales Header"
             OptionMembers = Open,Submitted;
             DataClassification = CustomerContent;
         }
+        field(8; "External document no"; Code[50]) { }
+        field(9; "Your refernece"; Code[50]) { }
     }
 
     keys

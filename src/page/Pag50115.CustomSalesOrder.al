@@ -20,6 +20,8 @@ page 50115 "Custom Sales Order"
                 field("PO Number"; Rec."PO Number") { ApplicationArea = All; }
                 field("BC Document No."; Rec."BC Document No.") { ApplicationArea = All; }
                 field("Status"; Rec."Status") { ApplicationArea = All; }
+                field("External document no"; Rec."External document no") { ApplicationArea = all; }
+                field("Your refernece"; Rec."Your refernece") { ApplicationArea = all; }
             }
 
             part(Lines; "Custom Sales Order Subpage")
