@@ -24,7 +24,7 @@ page 50115 "Custom Sales Order"
                 field("Your refernece"; Rec."Your refernece") { ApplicationArea = all; }
             }
 
-            part(Lines; "Custom Sales Order Subpage")
+            part(Lines; "Custom Sales Order Subpage_t")
             {
                 ApplicationArea = All;
                 SubPageLink = "App Order No." = field("App Order No.");

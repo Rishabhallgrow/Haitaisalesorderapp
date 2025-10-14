@@ -6,7 +6,7 @@ page 50117 "Custom Sales Order List"
     ApplicationArea = All;
     UsageCategory = Lists;
     Editable = false;
-    CardPageID = "Custom Sales Order";
+    CardPageID = "Custom Sales Order_test";
 
     layout
     {

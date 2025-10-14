@@ -2,7 +2,7 @@
   "id": "ef9d4716-44c6-464d-afba-751ca6c87e63",
   "name": "Haitaisales",
   "publisher": "AGT_RP",
-  "version": "1.0.0.7",
+  "version": "1.0.0.9",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -27,7 +27,7 @@
   "idRanges": [
     {
       "from": 50100,
-      "to": 50149
+      "to": 60000
     }
   ],
   "resourceExposurePolicy": {
